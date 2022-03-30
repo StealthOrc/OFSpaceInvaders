@@ -1,0 +1,11 @@
+﻿{
+  "solution": {
+    "path": "OFSpaceInvaders.sln",
+    "projects": [
+      "OFSpaceInvaders.Desktop\\OFSpaceInvaders.Desktop.csproj",
+      "OFSpaceInvaders.Game\\OFSpaceInvaders.Game.csproj",
+      "OFSpaceInvaders.Game.Tests\\OFSpaceInvaders.Game.Tests.csproj",
+      "OFSpaceInvaders.Resources\\OFSpaceInvaders.Resources.csproj"
+    ]
+  }
+}
