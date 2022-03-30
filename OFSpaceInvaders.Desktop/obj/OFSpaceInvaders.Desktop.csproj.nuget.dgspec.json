@@ -1,0 +1,184 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Desktop\\OFSpaceInvaders.Desktop.csproj": {}
+  },
+  "projects": {
+    "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Desktop\\OFSpaceInvaders.Desktop.csproj": {
+      "version": "0.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Desktop\\OFSpaceInvaders.Desktop.csproj",
+        "projectName": "OFSpaceInvaders",
+        "projectPath": "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Desktop\\OFSpaceInvaders.Desktop.csproj",
+        "packagesPath": "C:\\Users\\nitra\\.nuget\\packages\\",
+        "outputPath": "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Desktop\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nitra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Game\\OFSpaceInvaders.Game.csproj": {
+                "projectPath": "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Game\\OFSpaceInvaders.Game.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Game\\OFSpaceInvaders.Game.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Game\\OFSpaceInvaders.Game.csproj",
+        "projectName": "OFSpaceInvaders.Game",
+        "projectPath": "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Game\\OFSpaceInvaders.Game.csproj",
+        "packagesPath": "C:\\Users\\nitra\\.nuget\\packages\\",
+        "outputPath": "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Game\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nitra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Resources\\OFSpaceInvaders.Resources.csproj": {
+                "projectPath": "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Resources\\OFSpaceInvaders.Resources.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "ppy.osu.Framework": {
+              "target": "Package",
+              "version": "[2021.1029.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Resources\\OFSpaceInvaders.Resources.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Resources\\OFSpaceInvaders.Resources.csproj",
+        "projectName": "OFSpaceInvaders.Resources",
+        "projectPath": "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Resources\\OFSpaceInvaders.Resources.csproj",
+        "packagesPath": "C:\\Users\\nitra\\.nuget\\packages\\",
+        "outputPath": "F:\\Dev\\Projects\\OFSpaceInvaders\\OFSpaceInvaders.Resources\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nitra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

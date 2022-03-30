@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "OFSpaceInvaders.sln",
+    "projects": [
+      "OFSpaceInvaders.Game\\OFSpaceInvaders.Game.csproj",
+      "OFSpaceInvaders.Resources\\OFSpaceInvaders.Resources.csproj",
+      "OFSpaceInvaders.iOS\\OFSpaceInvaders.iOS.csproj"
+    ]
+  }
+}
