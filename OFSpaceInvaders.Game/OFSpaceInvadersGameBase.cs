@@ -21,8 +21,11 @@ namespace OFSpaceInvaders.Game
             base.Content.Add(Content = new DrawSizePreservingFillContainer
             {
                 // You may want to change TargetDrawSize to your "default" resolution, which will decide how things scale and position when using absolute coordinates.
-                TargetDrawSize = new Vector2(1366, 768)
-            });
+                // Resolution
+                //TargetDrawSize = new Vector2(224, 256),
+                TargetDrawSize = new Vector2(448, 512),
+                Strategy = DrawSizePreservationStrategy.Average,
+        });
         }
 
         [BackgroundDependencyLoader]

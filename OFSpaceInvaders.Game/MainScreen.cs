@@ -19,6 +19,7 @@ namespace OFSpaceInvaders.Game
                     Colour = Color4.Violet,
                     RelativeSizeAxes = Axes.Both,
                 },
+                /*
                 new SpriteText
                 {
                     Y = 20,
@@ -33,12 +34,11 @@ namespace OFSpaceInvaders.Game
                     Anchor = Anchor.Centre,
                     X = 300,
                 },
-                
+                */
                 new Bullet
                 {
                     Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    X = -150,
+                    Origin = Anchor.Centre,                    
                 }
             };
         }
