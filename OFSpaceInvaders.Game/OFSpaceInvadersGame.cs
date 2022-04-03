@@ -34,6 +34,9 @@ namespace OFSpaceInvaders.Game
             };
             gameScreen.Strategy = DrawSizePreservationStrategy.Minimum;
             gameScreen.TargetDrawSize = new Vector2(448, 512);
+
+            // TODO: Add Enemies to screen
+            // TODO: Maybe add a grid/container for the enemies to add into?
             AddInternal(gameScreen);
         }
 
@@ -54,6 +57,7 @@ namespace OFSpaceInvaders.Game
                 shootPlayer();
             if (currMoveKeyDown != default)
                 movePlayer(currMoveKeyDown);
+            // TODO: Check collision of bullets with enemies
         }
 
         protected override bool OnKeyDown(KeyDownEvent e)
