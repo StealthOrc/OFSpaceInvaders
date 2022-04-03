@@ -12,6 +12,7 @@ namespace OFSpaceInvaders.Game.Objects
     public abstract class SIActor: CompositeDrawable
     {
         protected int Health;
+        protected Container Container;
         protected Sprite Sprite;
 
         public SIActor() { }
@@ -30,5 +31,14 @@ namespace OFSpaceInvaders.Game.Objects
         /// this is getting called when HP drop to Zero
         /// </summary>
         protected abstract void Die();
+
+        /// <summary>
+        /// moves the Actor to the Left
+        /// </summary>
+        public abstract void MoveLeft();
+        /// <summary>
+        /// moves the Actor to the Right
+        /// </summary>
+        public abstract void MoveRight();
     }
 }

@@ -2,36 +2,32 @@ using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.IO.Stores;
-using osuTK;
 using OFSpaceInvaders.Resources;
+using osu.Framework.Platform;
+using osu.Framework.Graphics.Textures;
+using osuTK.Graphics.ES30;
 
 namespace OFSpaceInvaders.Game
 {
     public class OFSpaceInvadersGameBase : osu.Framework.Game
     {
-        // Anything in this class is shared between the test browser and the game implementation.
-        // It allows for caching global dependencies that should be accessible to tests, or changing
-        // the screen scaling for all components including the test browser and framework overlays.
+        private TextureStore textures;
 
-        protected override Container<Drawable> Content { get; }
-
-        protected OFSpaceInvadersGameBase()
-        {
-            // Ensure game and tests scale with window size and screen DPI.
-            base.Content.Add(Content = new DrawSizePreservingFillContainer
-            {
-                // You may want to change TargetDrawSize to your "default" resolution, which will decide how things scale and position when using absolute coordinates.
-                // Resolution
-                //TargetDrawSize = new Vector2(224, 256),
-                TargetDrawSize = new Vector2(448, 512),
-                Strategy = DrawSizePreservationStrategy.Average,
-        });
-        }
+        private DependencyContainer dependencies;
 
         [BackgroundDependencyLoader]
-        private void load()
+        private void load(GameHost host)
         {
-            Resources.AddStore(new DllResourceStore(typeof(OFSpaceInvadersResources).Assembly));
+            // Load the assets from our Resources project
+            Resources.AddStore(new DllResourceStore(OFSpaceInvadersResources.ResourceAssembly));
+
+            // To preserve the 8-bit aesthetic, disable texture filtering
+            // so they won't become blurry when upscaled
+            textures = new TextureStore(Textures, filteringMode: All.Nearest);
+            dependencies.Cache(textures);
         }
+
+        protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent)
+            => dependencies = new DependencyContainer(base.CreateChildDependencies(parent));
     }
 }
