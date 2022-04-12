@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using OFSpaceInvaders.Game.Objects;
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Textures;
-using osuTK;
 
 namespace OFSpaceInvaders.Game
 {
-    public class Player : SIActor
+    public class Player : SICharacter
     {
         [BackgroundDependencyLoader]
         private void load(TextureStore textures)
@@ -71,6 +68,16 @@ namespace OFSpaceInvaders.Game
         public override void MoveRight()
         {
             X += 4;
+        }
+
+        public override void MoveDown()
+        {
+            //do nothing
+        }
+
+        public override void MoveUp()
+        {
+            //do nothing
         }
     }
 }

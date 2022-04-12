@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using osu.Framework.Graphics.Containers;
+using osu.Framework.Graphics.Primitives;
 using osu.Framework.Graphics.Sprites;
 
 namespace OFSpaceInvaders.Game.Objects
@@ -17,28 +18,18 @@ namespace OFSpaceInvaders.Game.Objects
 
         public SIActor() { }
 
-        /// <summary>
-        /// shoots a projectile
-        /// </summary>
-        public abstract void Shoot();
+        public Quad CollisionQuad
+        {
+            get
+            {
+                RectangleF rect = ScreenSpaceDrawQuad.AABBFloat;
+                return Quad.FromRectangle(rect);
+            }
+        }
 
         /// <summary>
         /// get hit for dmg
         /// </summary>
         public abstract void Hit(int dmg);
-
-        /// <summary>
-        /// this is getting called when HP drop to Zero
-        /// </summary>
-        protected abstract void Die();
-
-        /// <summary>
-        /// moves the Actor to the Left
-        /// </summary>
-        public abstract void MoveLeft();
-        /// <summary>
-        /// moves the Actor to the Right
-        /// </summary>
-        public abstract void MoveRight();
     }
 }

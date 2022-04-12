@@ -1,4 +1,5 @@
-﻿using osu.Framework.Allocation;
+﻿using OFSpaceInvaders.Game.Objects;
+using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
@@ -8,7 +9,7 @@ using osu.Framework.Logging;
 
 namespace OFSpaceInvaders.Game
 {
-    public class Bullet : CompositeDrawable
+    public class Bullet : SIActor
     {
         private Container box;
         public Bullet()
