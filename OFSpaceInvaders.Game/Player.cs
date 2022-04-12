@@ -30,11 +30,6 @@ namespace OFSpaceInvaders.Game
             };
         }
 
-        public override void Hit(int dmg)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Shoot()
         {
             ((Container)Parent).Add(new Bullet() {

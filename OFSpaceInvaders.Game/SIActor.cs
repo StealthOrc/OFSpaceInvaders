@@ -10,7 +10,7 @@ namespace OFSpaceInvaders.Game.Objects
     /// <summary>
     /// A template class for all kind of Objects (Actors) represented in the game
     /// </summary>
-    public abstract class SIActor: CompositeDrawable
+    public class SIActor: CompositeDrawable
     {
         protected int Health;
         protected Container Container;
@@ -30,6 +30,11 @@ namespace OFSpaceInvaders.Game.Objects
         /// <summary>
         /// get hit for dmg
         /// </summary>
-        public abstract void Hit(int dmg);
+        public void Hit(int dmg)
+        {
+            if (dmg == 0)
+                return;
+            Health -= dmg;
+        }
     }
 }
