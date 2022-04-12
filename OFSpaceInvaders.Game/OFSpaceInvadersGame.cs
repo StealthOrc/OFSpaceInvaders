@@ -57,7 +57,16 @@ namespace OFSpaceInvaders.Game
                 shootPlayer();
             if (currMoveKeyDown != default)
                 movePlayer(currMoveKeyDown);
+
+            if (checkCollision())
+                Logger.LogPrint("HIT!");            
+        }
+
+        private bool checkCollision()
+        {
             // TODO: Check collision of bullets with enemies
+            // TODO: Check collision of enemy bullets with player
+            return false;
         }
 
         protected override bool OnKeyDown(KeyDownEvent e)
