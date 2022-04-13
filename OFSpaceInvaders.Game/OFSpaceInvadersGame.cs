@@ -1,4 +1,7 @@
-﻿using osu.Framework.Allocation;
+﻿using System;
+using OFSpaceInvaders.Game.Objects;
+using osu.Framework.Allocation;
+using osu.Framework.Extensions.PolygonExtensions;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Input.Events;
@@ -64,8 +67,18 @@ namespace OFSpaceInvaders.Game
 
         private bool checkCollision()
         {
+            foreach (var child in gameScreen.Children)
+            {
+                var actor = (SIActor)child;
+                if (!(actor is Player) && (actor is Bullet ))//or is enemy?
+                {
+                    //if we collide return true, otherwise search for collider.
+                    if (!player.CollisionQuad.Intersects(actor.CollisionQuad))
+                        continue;
+                    return true;
+                }
+            }
             // TODO: Check collision of bullets with enemies
-            // TODO: Check collision of enemy bullets with player
             return false;
         }
 
