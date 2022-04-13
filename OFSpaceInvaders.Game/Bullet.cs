@@ -6,16 +6,91 @@ using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Textures;
 using osu.Framework.Logging;
+using osuTK;
 
 namespace OFSpaceInvaders.Game
 {
     public class Bullet : SIActor
     {
         private Container box;
-        public Bullet()
+        /// <summary>
+        /// Whether the bullet is presently animating or not.
+        /// </summary>
+        public bool Running { get; private set; }
+        /// <summary>
+        /// X direction which the bullet flies towards
+        /// </summary>
+        public int DirectionX { get; private set; }
+        /// <summary>
+        /// Y direction which the bullet flies towards
+        /// </summary>
+        public int DirectionY { get; private set; }
+        public Bullet(float aVelocity = 1)
         {
             AutoSizeAxes = Axes.Both;
             Origin = Anchor.Centre;
+            Running = true;
+            Velocity = aVelocity;            
+        }
+        /// <summary>
+        /// velocity of the bullet
+        /// </summary>
+        public float Velocity { get; private set; }
+
+        private void determineDirections(float aRotation)
+        {
+            var dir = (int)(aRotation/45);
+            //a definetly way too complicated rotation system for this game.
+            switch (dir)
+            {
+                case 0:
+                    //Rotation   =   0;
+                    DirectionX =   0;
+                    DirectionY =   1;
+                    break;       
+                case 1:          
+                    //Rotation   =  45;
+                    DirectionX =  -1;
+                    DirectionY =   1;
+                    break;       
+                case 2:          
+                    //Rotation   =  90;
+                    DirectionX =  -1;
+                    DirectionY =   0;
+                    break;       
+                case 3:          
+                    //Rotation   = 135;
+                    DirectionX =  -1;
+                    DirectionY =  -1;
+                    break;       
+                case 4:          
+                    //Rotation   = 180;
+                    DirectionX =   0;
+                    DirectionY =  -1;
+                    break;       
+                case 5:          
+                    //Rotation   = 225;
+                    DirectionX =   1;
+                    DirectionY =  -1;
+                    break;       
+                case 6:          
+                    //Rotation   = 270;
+                    DirectionX =   1;
+                    DirectionY =   0;
+                    break;       
+                case 7:          
+                    //Rotation   = 315;
+                    DirectionX =   1;
+                    DirectionY =   1;
+                    break;       
+                case 8:          
+                    //Rotation   = 360;
+                    DirectionX =   0;
+                    DirectionY =  -1;
+                    break;
+                default:
+                    break;
+            }
         }
 
         [BackgroundDependencyLoader]
@@ -37,11 +112,25 @@ namespace OFSpaceInvaders.Game
             };
         }
 
+        protected override void Update()
+        {
+            if (!Running)
+                return;
+
+            X += Velocity * DirectionX;
+            Y += Velocity * DirectionY;
+        }
+
+        protected override void Die()
+        {
+            base.Die();
+            Running = false;
+        }
+
         protected override void LoadComplete()
         {
             base.LoadComplete();
-            
-            box.MoveToY(box.Y - 400, 2000);
+            determineDirections(Rotation);
         }
     }
 }

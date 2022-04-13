@@ -38,21 +38,8 @@ namespace OFSpaceInvaders.Game
                                                     X = X,
                                                     Y = Y-4,
                                                     Scale = Scale,
+                                                    Rotation = 180
                                                  });
-            /*((Container)Parent).Add(new SpinningBox()
-            {
-                Anchor = Anchor.Centre,
-                Origin = Anchor.Centre,
-                X = X,
-                Y = Y - 4,
-                Scale = new Vector2(0.5f,0.5f),
-            });
-            */
-        }
-
-        protected override void Die()
-        {
-            throw new NotImplementedException();
         }
 
         public override void MoveLeft()
