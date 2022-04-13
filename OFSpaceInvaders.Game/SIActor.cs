@@ -29,7 +29,7 @@ namespace OFSpaceInvaders.Game.Objects
         /// <summary>
         /// this is getting called when HP drop to Zero
         /// </summary>
-        protected void Die()
+        protected virtual void Die()
         {
             //get rid of our drawable
             Dispose();
