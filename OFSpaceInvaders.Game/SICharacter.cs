@@ -16,11 +16,6 @@ namespace OFSpaceInvaders.Game.Objects
         public abstract void Shoot();
 
         /// <summary>
-        /// this is getting called when HP drop to Zero
-        /// </summary>
-        protected abstract void Die();
-
-        /// <summary>
         /// moves the Character to the Left
         /// </summary>
         public abstract void MoveLeft();

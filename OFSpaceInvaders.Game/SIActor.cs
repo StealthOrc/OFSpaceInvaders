@@ -26,6 +26,14 @@ namespace OFSpaceInvaders.Game.Objects
                 return Quad.FromRectangle(rect);
             }
         }
+        /// <summary>
+        /// this is getting called when HP drop to Zero
+        /// </summary>
+        protected void Die()
+        {
+            //get rid of our drawable
+            Dispose();
+        }
 
         /// <summary>
         /// get hit for dmg
@@ -34,7 +42,10 @@ namespace OFSpaceInvaders.Game.Objects
         {
             if (dmg == 0)
                 return;
-            Health -= dmg;
+            if (Health - Math.Abs(dmg) <= 0)
+                Die();
+            else
+                Health -= dmg;
         }
     }
 }
