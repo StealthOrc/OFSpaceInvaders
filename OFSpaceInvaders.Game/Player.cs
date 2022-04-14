@@ -32,13 +32,10 @@ namespace OFSpaceInvaders.Game
 
         public override void Shoot()
         {
-            ((Container)Parent).Add(new Bullet() {
-                                                    Anchor = Anchor.Centre,
-                                                    Origin = Anchor.Centre,
-                                                    X = X,
+            ((Container)Parent).Add(new Bullet(this) {                                                    
                                                     Y = Y-4,
                                                     Scale = Scale,
-                                                    Rotation = 180
+                                                    Rotation = 180,                                                    
                                                  });
         }
 

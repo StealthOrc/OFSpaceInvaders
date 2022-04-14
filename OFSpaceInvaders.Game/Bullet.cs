@@ -25,12 +25,18 @@ namespace OFSpaceInvaders.Game
         /// Y direction which the bullet flies towards
         /// </summary>
         public int DirectionY { get; private set; }
-        public Bullet(float aVelocity = 1)
+        /// <summary>
+        /// reference that points to the SIActor that shot this bullet
+        /// </summary>
+        public SIActor Owner { get; private set; }
+        public Bullet(SIActor aOwner, float aVelocity = 1)
         {
             AutoSizeAxes = Axes.Both;
+            Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
             Running = true;
-            Velocity = aVelocity;            
+            Velocity = aVelocity;
+            Owner = aOwner;
         }
         /// <summary>
         /// velocity of the bullet
