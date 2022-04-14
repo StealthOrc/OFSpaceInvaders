@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using OFSpaceInvaders.Game.Objects;
+using osu.Framework.Graphics;
 
 namespace OFSpaceInvaders.Game.Objects
 {
@@ -10,6 +11,10 @@ namespace OFSpaceInvaders.Game.Objects
     /// </summary>
     public abstract class SICharacter: SIActor
     {
+        /// <summary>
+        /// Anchor/Position to shoot a Bullet from.
+        /// </summary>
+        protected Drawable ShootingAnchor;
         /// <summary>
         /// shoots a projectile
         /// </summary>
