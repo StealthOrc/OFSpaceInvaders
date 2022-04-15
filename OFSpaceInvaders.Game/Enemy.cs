@@ -33,7 +33,6 @@ namespace OFSpaceInvaders.Game
         protected override void Update()
         {
             base.Update();
-            Logger.Log(ToParentSpace(ShootingAnchor.Position).ToString());
         }
 
         public override void MoveLeft()

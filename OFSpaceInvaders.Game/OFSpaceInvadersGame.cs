@@ -86,7 +86,7 @@ namespace OFSpaceInvaders.Game
         {
             if (e.Repeat)
             {
-                Logger.Log(e.Key.ToString());
+                //Do nothing?
             }
 
             if (e.Key == Key.Space)
@@ -128,7 +128,6 @@ namespace OFSpaceInvaders.Game
 
         protected override void OnKeyUp(KeyUpEvent e)
         {
-            Logger.Log(e.Key.ToString());
             if (e.Key == currMoveKeyDown)
                 currMoveKeyDown = default;
             if (e.Key == Key.Space)
