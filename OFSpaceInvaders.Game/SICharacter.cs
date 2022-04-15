@@ -16,6 +16,10 @@ namespace OFSpaceInvaders.Game.Objects
         /// </summary>
         protected Drawable ShootingAnchor;
         /// <summary>
+        /// movement speed into any direction
+        /// </summary>
+        protected float MovementSpeed;
+        /// <summary>
         /// shoots a projectile
         /// </summary>
         public abstract void Shoot();

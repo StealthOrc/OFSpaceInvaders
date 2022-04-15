@@ -37,6 +37,7 @@ namespace OFSpaceInvaders.Game
                 }
             };
             ShootingAnchor.Hide();
+            MovementSpeed = 4;
         }
 
         public override void Shoot()
@@ -60,12 +61,12 @@ namespace OFSpaceInvaders.Game
 
         public override void MoveLeft()
         {
-            X -= 4;
+            X -= MovementSpeed;
         }
 
         public override void MoveRight()
         {
-            X += 4;
+            X += MovementSpeed;
         }
 
         public override void MoveDown()
