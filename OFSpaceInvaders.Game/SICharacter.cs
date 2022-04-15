@@ -2,7 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using OFSpaceInvaders.Game.Objects;
+using osu.Framework.Allocation;
 using osu.Framework.Graphics;
+using osu.Framework.Graphics.Containers;
+using osu.Framework.Graphics.Shapes;
+using osu.Framework.Graphics.Sprites;
+using osu.Framework.Graphics.Textures;
+using osuTK;
 
 namespace OFSpaceInvaders.Game.Objects
 {
@@ -19,6 +25,33 @@ namespace OFSpaceInvaders.Game.Objects
         /// movement speed into any direction
         /// </summary>
         protected float MovementSpeed;
+
+        protected void LoadCharacter(TextureStore textures, String textureName,Vector2 distanceShootingAnchor)
+        {
+            InternalChild = Container = new Container
+            {
+                AutoSizeAxes = Axes.Both,
+                Anchor = Anchor.Centre,
+                Origin = Anchor.Centre,
+                Children = new Drawable[]
+                {
+                    Sprite = new Sprite
+                    {
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        Texture = textures.Get(textureName)
+                    },
+                    ShootingAnchor = new Box()
+                    {
+                        Anchor = Anchor.Centre,
+                        Origin = Anchor.Centre,
+                        Y = Y+distanceShootingAnchor.Y,
+                        X = X+distanceShootingAnchor.X,
+                    }
+                }
+            };
+            ShootingAnchor.Hide();
+        }
         /// <summary>
         /// shoots a projectile
         /// </summary>

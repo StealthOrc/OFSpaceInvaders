@@ -7,6 +7,7 @@ using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
 using osu.Framework.Graphics.Textures;
 using osu.Framework.Logging;
+using osuTK;
 
 namespace OFSpaceInvaders.Game
 {
@@ -15,28 +16,7 @@ namespace OFSpaceInvaders.Game
         [BackgroundDependencyLoader]
         private void load(TextureStore textures)
         {
-            InternalChild = Container = new Container
-            {
-                AutoSizeAxes = Axes.Both,
-                Anchor = Anchor.Centre,
-                Origin = Anchor.Centre,
-                Children = new Drawable[]
-                {
-                    Sprite = new Sprite
-                    {
-                        Anchor = Anchor.Centre,
-                        Origin = Anchor.Centre,
-                        Texture = textures.Get("player")
-                    },
-                    ShootingAnchor = new Box()
-                    {
-                        Anchor = Anchor.Centre,
-                        Origin = Anchor.Centre,
-                        Y = Y-4,
-                    }
-                }
-            };
-            ShootingAnchor.Hide();
+            LoadCharacter(textures, "player", new Vector2(0, -4));
             MovementSpeed = 4;
         }
 
