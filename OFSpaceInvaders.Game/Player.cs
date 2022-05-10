@@ -13,8 +13,12 @@ namespace OFSpaceInvaders.Game
 {
     public class Player : SICharacter
     {
+        //needed to keep the textures active??
+        [Resolved]
+        private TextureStore textures { get; set; }
+
         [BackgroundDependencyLoader]
-        private void load(TextureStore textures)
+        private void load()
         {
             LoadCharacter(textures, "player", new Vector2(0, -4));
             MovementSpeed = 4;
@@ -22,14 +26,17 @@ namespace OFSpaceInvaders.Game
 
         public override void Shoot()
         {
-            ((Container)Parent).Add(new Bullet(this) {
-                                                    // this seems whacky but works for now. I'd rather want to use something like WorldSpaceCoords
-                                                    // or get ShootingAnchor Coords for this.Parent space and set Bullet Coords to that.
-                                                    Y = Y+ShootingAnchor.Y,
-                                                    X = X+ShootingAnchor.X,
-                                                    Scale = Scale,
-                                                    Rotation = 180,                                                    
-                                                 });
+            /* 10.05.2022: Somehow I can't use (Container)Parent.Add to add this to the parent.
+             *             neither can I try to ((DrawSizePreservingFillContainer)((Container)Parent).Add to call the gameScreen.Add..
+             *             it all results in a "Disposed Drawables may never be in the scene graph." Exception??
+             */
+            Container.Add(new Bullet()
+            {
+                Y = ShootingAnchor.Y,
+                X = ShootingAnchor.X,
+                Scale = Scale,
+                Rotation = 180,                                                    
+            });            
         }
 
 
@@ -56,6 +63,7 @@ namespace OFSpaceInvaders.Game
         public override void MoveUp()
         {
             //do nothing
+
         }
     }
 }

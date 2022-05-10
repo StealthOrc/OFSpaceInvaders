@@ -17,24 +17,31 @@ namespace OFSpaceInvaders.Game
     public class OFSpaceInvadersGame : OFSpaceInvadersGameBase
     {
         private readonly DrawSizePreservingFillContainer gameScreen = new DrawSizePreservingFillContainer();
-        private Player player;
+        private Player player = new Player();
         private StopwatchClock shootClock = new StopwatchClock();
         private StopwatchClock movementClock = new StopwatchClock();
+        private GameState gameState = GameState.Ready;
         private Key currMoveKeyDown;
         private bool isShootKeyDown = false;
+        private Enemy[] enemyList;
 
         [BackgroundDependencyLoader]
         private void load()
         {
             gameScreen.Children = new Drawable[]
             {
-                player = new Player()
-                {
-                    Anchor = Anchor.Centre,
-                    Origin = Anchor.Centre,
-                    Scale  = new Vector2(2,2),
-                }
+                player
             };
+            //create enemies
+            //Somehow this also calls the dispose exception for the player??
+            /*
+            Array.Resize(ref enemyList, 1);
+            enemyList[0] = new Enemy();
+            foreach (var enemy in enemyList)
+            {
+                gameScreen.Add(enemy);
+            }         
+            */
             gameScreen.Strategy = DrawSizePreservationStrategy.Minimum;
             gameScreen.TargetDrawSize = new Vector2(448, 512);
 
@@ -50,19 +57,30 @@ namespace OFSpaceInvaders.Game
 
         protected override void Update()
         {
-            base.Update();
-            if (shootClock.Elapsed.TotalSeconds >= 1)
-                shootClock.Reset();
-            if (movementClock.Elapsed.TotalMilliseconds >= 20)
-                movementClock.Reset();
+            switch (gameState)
+            {
+                case GameState.Ready:
+                    gameState = GameState.Playing;
+                    break;
+                case GameState.Playing:
+                    if (shootClock.Elapsed.TotalSeconds >= 1)
+                        shootClock.Reset();
+                    if (movementClock.Elapsed.TotalMilliseconds >= 20)
+                        movementClock.Reset();
 
-            if (isShootKeyDown)
-                shootPlayer();
-            if (currMoveKeyDown != default)
-                movePlayer(currMoveKeyDown);
+                    if (isShootKeyDown)
+                        shootPlayer();
+                    if (currMoveKeyDown != default)
+                        movePlayer(currMoveKeyDown);
 
-            if (checkCollision())
-                Logger.LogPrint("HIT!");            
+                    if (checkCollision())
+                        Logger.LogPrint("HIT!");
+                    break;
+                case GameState.GameOver:
+                    break;
+                default:
+                    break;
+            }          
         }
 
         private bool checkCollision()
@@ -70,12 +88,11 @@ namespace OFSpaceInvaders.Game
             foreach (var child in gameScreen.Children)
             {
                 var actor = (SIActor)child;
-                if (!(actor is Player) && (actor is Bullet ))//or is enemy?
-                {
-                    //if we collide return true, otherwise search for collider.
-                    if (!player.CollisionQuad.Intersects(actor.CollisionQuad))
-                        continue;
-                    return true;
+                if ((actor is Bullet) || (actor is Enemy))
+                {                    
+                    //check player collision
+                    if (player.CollisionQuad.Intersects(actor.CollisionQuad))
+                      player.Hit(1);
                 }
             }
             // TODO: Check collision of bullets with enemies
@@ -84,11 +101,6 @@ namespace OFSpaceInvaders.Game
 
         protected override bool OnKeyDown(KeyDownEvent e)
         {
-            if (e.Repeat)
-            {
-                //Do nothing?
-            }
-
             if (e.Key == Key.Space)
                 shootPlayer();
                 
@@ -120,6 +132,10 @@ namespace OFSpaceInvaders.Game
         {
             if (!shootClock.IsRunning)
             {
+                /* 9.05.2022: Actually the players shoot() should be called, though somehow there's an issue with dispose():
+                                "Disposed Drawables may never be in the scene graph."
+                 *            So for now we need to do this manually here :(
+                 */
                 player.Shoot();
                 shootClock.Start();
                 isShootKeyDown = true;

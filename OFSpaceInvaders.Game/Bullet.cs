@@ -27,16 +27,18 @@ namespace OFSpaceInvaders.Game
         public int DirectionY { get; private set; }
         /// <summary>
         /// reference that points to the SIActor that shot this bullet
+        /// Or at least should point and should be given in the constructor,
+        /// but this somehow just calls a "Disposed Drawables may never be in the scene graph." Exception??
+        /// so just a placeholder for now.
         /// </summary>
-        public SIActor Owner { get; private set; }
-        public Bullet(SIActor aOwner, float aVelocity = 1)
+        public Drawable Owner { get; private set; }
+        public Bullet(float aVelocity = 1)
         {
             AutoSizeAxes = Axes.Both;
             Anchor = Anchor.Centre;
             Origin = Anchor.Centre;
             Running = true;
             Velocity = aVelocity;
-            Owner = aOwner;
         }
         /// <summary>
         /// velocity of the bullet

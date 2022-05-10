@@ -14,11 +14,16 @@ namespace OFSpaceInvaders.Game
         {
             LoadCharacter(textures, "invader1", new Vector2(0, 4));
             MovementSpeed = 20;
-        }
+            Position = new Vector2(20, 20);
+        } 
 
         public override void Shoot()
         {
-            ((Container)Parent).Add(new Bullet(this)
+            /* 10.05.2022: Somehow I can't use (Container)Parent.Add to add this to the parent.
+             *             neither can I try to ((DrawSizePreservingFillContainer)((Container)Parent).Add to call the gameScreen.Add..
+             *             it all results in a "Disposed Drawables may never be in the scene graph." Exception??
+             */
+            Container.Add(new Bullet()
             {
                 // this seems whacky but works for now. I'd rather want to use something like WorldSpaceCoords
                 // or get ShootingAnchor Coords for this.Parent space and set Bullet Coords to that.

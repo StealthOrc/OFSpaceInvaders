@@ -20,27 +20,30 @@ namespace OFSpaceInvaders.Game.Objects
         /// <summary>
         /// Anchor/Position to shoot a Bullet from.
         /// </summary>
-        protected Drawable ShootingAnchor;
+        public Drawable ShootingAnchor;
         /// <summary>
         /// movement speed into any direction
         /// </summary>
         protected float MovementSpeed;
 
-        protected void LoadCharacter(TextureStore textures, String textureName,Vector2 distanceShootingAnchor)
+        protected virtual void LoadCharacter(TextureStore textures, String textureName,Vector2 distanceShootingAnchor)
         {
             InternalChild = Container = new Container
             {
                 AutoSizeAxes = Axes.Both,
                 Anchor = Anchor.Centre,
                 Origin = Anchor.Centre,
+                
                 Children = new Drawable[]
                 {
+                    
                     Sprite = new Sprite
                     {
                         Anchor = Anchor.Centre,
                         Origin = Anchor.Centre,
                         Texture = textures.Get(textureName)
                     },
+                    
                     ShootingAnchor = new Box()
                     {
                         Anchor = Anchor.Centre,
@@ -48,9 +51,16 @@ namespace OFSpaceInvaders.Game.Objects
                         Y = Y+distanceShootingAnchor.Y,
                         X = X+distanceShootingAnchor.X,
                     }
+                    
                 }
             };
+            /*10.05.2022: Somehow setting th anchor for the object to Anchor.Centre is calling a Dispose and sometime in a future loop this will then call a
+             *            "Disposed Drawables may never be in the scene graph." Exception?? */
+            Anchor = Anchor.BottomCentre;
+            Origin = Anchor.Centre;
+            Scale = new Vector2(2, 2);
             ShootingAnchor.Hide();
+            Y = -20f;
         }
         /// <summary>
         /// shoots a projectile
